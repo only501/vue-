@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>toDoList</title>
+    <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+ <div id="app" class="app">
+     
+      <!-- 导航条 -->
+      <div class="app_bar">
+            <div>
+              <span>TODOS</span>
+              <input type="text"placeholder="添加todos" v-model.trim='inp' @keyup.enter='add'>
+            </div>
+          </div>
+       <div class="panel">
+            <div class="panel_title">
+              <span>正在进行</span>
+              <span v-text='list.length'></span>
+            </div>
+            <div class="panel_list" v-for='(items,i) in list'>
+              <span  @click="me(i,'1')"></span>
+              <span>
+                <input v-model='items.title'></input>
+              </span>
+              <span @click="re(i,'1')"></span>
+            </div>
+          </div>
+    
+          <div class="panel">
+            <div class="panel_title">
+              <span>已经完成</span>
+              <span v-text='list1.length'></span>
+            </div>
+            <!-- 一行 -->
+            <div class="panel_list panel_list-done" v-for='(items,i) in list1'>
+              <span @click="me(i,'0')"></span>
+              <span>
+                  <input v-model='items.title'></input>
+            </span>
+              <span @click="re(i,'0')"></span>
+            </div>
+          </div>
+    
+          <div class="app_bot">此案例由only制作完成</div>
+ </div>
+   
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="./js/todolist.js"></script>
+</body>
+</html>
